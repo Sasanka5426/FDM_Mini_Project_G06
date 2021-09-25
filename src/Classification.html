@@ -27,7 +27,7 @@
                       <h5 class="card-title">Card title</h5>
                       <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
                       <!-- <a href="#" class="btn btn-primary">Button</a> -->
-                      <form>
+                      <form action="{{ url_for('predict')}}"method="post">
 
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Encounter ID" aria-label="Encounter ID" aria-describedby="button-addon2">
@@ -39,7 +39,7 @@
                             
                         </div>
         
-                        <button type="button" class="btn btn-success">Submit</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
        
                         </form>
 
