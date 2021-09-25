@@ -62,6 +62,11 @@ dataset['readmitted'] = dataset['readmitted'].map({'NO':0, '>30':1, '<30':2})
 dataset['max_glu_serum'] = dataset['max_glu_serum'].map({'None':0, '>300':1, 'Norm':2, '>200':3})
 dataset['A1Cresult'] = dataset['A1Cresult'].map({'None':0, '>7':1, '>8':2, 'Norm':3})
 
+
+dataset = dataset.drop(['repaglinide','nateglinide','chlorpropamide','acetohexamide','tolbutamide','miglitol','troglitazone',
+'tolazamide','examide','citoglipton','glyburide-metformin','glipizide-metformin','glimepiride-pioglitazone',
+'metformin-rosiglitazone','metformin-pioglitazone'],axis=1)
+
 # Splitting
 
 # splitting data
@@ -89,3 +94,5 @@ y_pred=rfcl.predict(x_test)
 
 print(accuracy_score(y_test,y_pred))
 pickle.dump(rfcl, open('model.pkl','wb'))
+
+model = pickle.load(open('model.pkl','rb'))
