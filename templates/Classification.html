@@ -3,10 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>FDM MINI PROJECT</title>
-<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.1.1-dist/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.1.1-dist/js/bootstrap.min.js') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap-5.1.1-dist/css/bootstrap.min.css') }}">  
+
+
+
+<!-- <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="../Views/bootstrap-5.1.1-dist/css/bootstrap.min.css"> 
 <script src="../Views/bootstrap-5.1.1-dist/js/bootstrap.min.js"></script> 
-<script src="Components/research.js"></script> 
+<script src="Components/research.js"></script>  -->
 
 
   
@@ -30,134 +37,11 @@
                       <form action="{{ url_for('predict')}}"method="post">
 
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'race' placeholder="race" aria-label="race" aria-describedby="button-addon2">
+                            <input type="text" class="form-control" name= 'encounter_id' placeholder="Encounter ID" aria-label="encounter_id" aria-describedby="button-addon2">
                             
                         </div>
                         <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'gender' placeholder="gender" aria-label="gender" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'age' placeholder="age" aria-label="age" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'admission_type_id' placeholder="admission_type_id" aria-label="admission_type_id" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'discharge_disposition_id' placeholder="discharge_disposition_id" aria-label="discharge_disposition_id" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'admission_source_id' placeholder="admission_source_id" aria-label="admission_source_id" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'time_in_hospital' placeholder="time_in_hospital" aria-label="time_in_hospital" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'num_lab_procedures' placeholder="num_lab_procedures" aria-label="num_lab_procedures" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'num_procedures' placeholder="num_procedures" aria-label="num_procedures" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'num_medications' placeholder="num_medications" aria-label="num_medications" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'number_outpatient' placeholder="number_outpatient" aria-label="number_outpatient" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'number_emergency' placeholder="number_emergency" aria-label="number_emergency" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'number_inpatient' placeholder="number_inpatient" aria-label="number_inpatient" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'number_diagnoses' placeholder="number_diagnoses" aria-label="number_diagnoses" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'max_glu_serum' placeholder="max_glu_serum" aria-label="max_glu_serum" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'A1Cresult' placeholder="A1Cresult" aria-label="A1Cresult" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'metformin' placeholder="metformin" aria-label="metformin" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'glimepiride' placeholder="glimepiride" aria-label="glimepiride" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'glipizide' placeholder="glipizide" aria-label="glipizide" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'glyburide' placeholder="glyburide" aria-label="glyburide" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'pioglitazone' placeholder="pioglitazone" aria-label="pioglitazone" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'rosiglitazone' placeholder="rosiglitazone" aria-label="rosiglitazone" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'acarbose' placeholder="acarbose" aria-label="acarbose" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'insulin' placeholder="insulin" aria-label="insulin" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'change' placeholder="change" aria-label="change" aria-describedby="button-addon2">
-                            
-                        </div>
-                        <br>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name= 'diabetesMed' placeholder="diabetesMed" aria-label="diabetesMed" aria-describedby="button-addon2">
-                            
-                        </div>
+                        
                         
 
                         
@@ -178,9 +62,10 @@
             <div class="col-7">
                 <div class="card w-150">
                     <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
+                      <!-- <h5 class="card-title">Card title</h5>
                       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-primary">Button</a>
+                      <a href="#" class="btn btn-primary">Button</a> -->
+                      {{ prediction_text }}
 
                             
 
@@ -225,7 +110,7 @@
 
 
 
-   {{ prediction_text }}
+   
 
  </div>
 </body>
