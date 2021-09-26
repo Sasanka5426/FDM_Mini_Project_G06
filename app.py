@@ -3,6 +3,7 @@ import numpy as np
 from flask import Flask, render_template,request
 import pickle#Initialize the flask App
 
+
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 #default page of our web-app
@@ -24,7 +25,41 @@ def predict():
 
     prediction = model.predict(final_features)
     #output = round(prediction[0] ) 
-    return render_template('Classification.html', prediction_text=' Customer Segmentation is :{}'.format(prediction))
+
+    if prediction == 0:
+        prediction_text_val='No Re-admission'
+    
+    elif prediction == 1:
+        prediction_text_val='After 30 days'
+    
+    elif prediction == 2:
+        prediction_text_val='Before 30 days'
+    
+    
+    return render_template('Classification.html', prediction_text=prediction_text_val.format(prediction))
+
+    ####testing plot
+    import plotly
+    import plotly.graph_objs as go
+    import pandas as pd
+    df = pd.read_csv('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv')
+    # Create a trace
+    data = [go.Scatter(
+        x = df['data'],
+        y = df['totale_positivi'],
+    )]
+    layout = go.Layout(
+            xaxis=dict(
+                title='Data',    
+            ),
+            yaxis=dict(
+                title='Totale positivi',  
+            )
+        )
+    fig = go.Figure(data=data, layout=layout)
+
+    plotly.offline.plot(fig,filename='positives.html',config={'displayModeBar': False})
+
 if __name__ == "__main__":
     app.run(debug=True)
 

@@ -4,10 +4,14 @@
   <meta charset="UTF-8">
   <title>FDM MINI PROJECT</title>
 <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="../Views/bootstrap-5.1.1-dist/css/bootstrap.min.css"> 
-<script src="../Views/bootstrap-5.1.1-dist/js/bootstrap.min.js"></script> 
+<!-- <link rel="stylesheet" href="../Views/bootstrap-5.1.1-dist/css/bootstrap.min.css">  -->
+<!-- <script src="../Views/bootstrap-5.1.1-dist/js/bootstrap.min.js"></script>  -->
 <script src="Components/research.js"></script> 
 
+<!-- {{ url_for('static', filename='bootstrap.css') }} -->
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.1.1-dist/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.1.1-dist/js/bootstrap.min.js') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap-5.1.1-dist/css/bootstrap.min.css') }}">
 
   
 </head>
@@ -223,7 +227,7 @@
         </div>
     </div>
 
-
+    
 
    {{ prediction_text }}
 
