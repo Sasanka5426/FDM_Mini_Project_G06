@@ -21,8 +21,20 @@
 
 <body>
 
-<br><br><br><br>
+<br>
     <div class="cintainer-fluide">
+        <div class="row">
+            <center>
+            <h3>
+                <small class="text-muted">Predict</small>
+                Diebetic Patient Re-admission
+            </h3>
+            </center>
+
+        </div>
+        <br>
+    
+
         <div class="row">
             <div class="col-md-1">
 
@@ -31,7 +43,7 @@
 
                 <div class="card w-70">
                     <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
+                      <h5 class="card-title">Please enter Encounter ID</h5>
                       <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
                       <!-- <a href="#" class="btn btn-primary">Button</a> -->
                       <form action="{{ url_for('predict')}}"method="post">
@@ -62,11 +74,13 @@
             <div class="col-7">
                 <div class="card w-150">
                     <div class="card-body">
-                      <!-- <h5 class="card-title">Card title</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-primary">Button</a> -->
-                      {{ prediction_text }}
 
+                        {{encounterID}} &nbsp&nbsp&nbsp {{patient_nbr}}
+                        <br>
+         
+                        {{payer_code}}  &nbsp&nbsp&nbsp {{ prediction_text }}
+                        
+                        
                             
 
                     </div>
@@ -89,9 +103,9 @@
             <div class="col-md-10">
                 <div class="card w-150">
                     <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
+                      <h5 class="card-title">Plot(additional details)</h5>
                       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-primary">Button</a>
+                      
 
                             
 

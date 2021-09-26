@@ -15,76 +15,87 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
     #For rendering results on HTML GUI
-    print(request.form.values())
-    int_features = [x for x in request.form.values()]
-    final_features = [np.array(int_features)]
+    try:
+        print(request.form.values())
+        int_features = [x for x in request.form.values()]
+        final_features = [np.array(int_features)]
 
 
-    dataset = pd.read_csv("Data//demo_dataset.csv")
-    id = int(final_features[0])
-    print(type(id))
- 
-
-    #############################
+        dataset = pd.read_csv("Data//demo_dataset.csv")
+        id = int(final_features[0])
+        print(type(id))
     
 
-    #dataset = pd.read_csv("demo_dataset.csv")
+        #############################
+        
 
-    #id = 430751654  After 30 days
+        #dataset = pd.read_csv("demo_dataset.csv")
 
-    dataset = dataset.loc[dataset['encounter_id'] == id]
+        #id = 430751654  After 30 days
 
-    # dropping unwanted columns
-    dataset = dataset.drop(['encounter_id','patient_nbr','weight','payer_code','medical_specialty','diag_1','diag_2','diag_3'],axis=1)
+        dataset = dataset.loc[dataset['encounter_id'] == id]
+        encounterID = dataset['encounter_id'].values
+        patient_nbr = dataset['patient_nbr'].values
+        payer_code = dataset['payer_code'].values
 
-    # replacing values
-    dataset["race"].replace({"?":"Unknown"}, inplace=True)
+        # dropping unwanted columns
+        dataset = dataset.drop(['encounter_id','patient_nbr','weight','payer_code','medical_specialty','diag_1','diag_2','diag_3'],axis=1)
+        
 
-    # removing rows that contains 'Unknown/Invalid' for gender column
-    dataset = dataset[dataset.gender != 'Unknown/Invalid']
+        # replacing values
+        dataset["race"].replace({"?":"Unknown"}, inplace=True)
 
-    # data encoding
+        # removing rows that contains 'Unknown/Invalid' for gender column
+        dataset = dataset[dataset.gender != 'Unknown/Invalid']
 
-    dataset['race'] = dataset['race'].map({'Caucasian':0, 'AfricanAmerican':1, 'Asian':2, 'Hispanic':3, 'Other':4, 'Unknown':5})
-    dataset['gender'] = dataset['gender'].map({'Male':1,'Female':0})
-    dataset['age'] = dataset['age'].map({'[0-10)':1,'[10-20)':2, '[20-30)':3, '[30-40)':4, '[40-50)':5, '[50-60)':6, 
-                                        '[60-70)':7, '[70-80)':8, '[80-90)':9, '[90-100)':10})
+        # data encoding
 
-    # data encoding (col 16-38)
+        dataset['race'] = dataset['race'].map({'Caucasian':0, 'AfricanAmerican':1, 'Asian':2, 'Hispanic':3, 'Other':4, 'Unknown':5})
+        dataset['gender'] = dataset['gender'].map({'Male':1,'Female':0})
+        dataset['age'] = dataset['age'].map({'[0-10)':1,'[10-20)':2, '[20-30)':3, '[30-40)':4, '[40-50)':5, '[50-60)':6, 
+                                            '[60-70)':7, '[70-80)':8, '[80-90)':9, '[90-100)':10})
 
-    for col in dataset.iloc[:,16:39]:
-        dataset[col] = dataset[col].map({'No':0, 'Steady':1, 'Up':2, 'Down':3})
+        # data encoding (col 16-38)
 
-    # data encoding
-    dataset['change'] = dataset['change'].map({'No':0, 'Ch':1})
-    dataset['diabetesMed'] = dataset['diabetesMed'].map({'No':0, 'Yes':1})
+        for col in dataset.iloc[:,16:39]:
+            dataset[col] = dataset[col].map({'No':0, 'Steady':1, 'Up':2, 'Down':3})
 
-
-    dataset['max_glu_serum'] = dataset['max_glu_serum'].map({'None':0, '>300':1, 'Norm':2, '>200':3})
-    dataset['A1Cresult'] = dataset['A1Cresult'].map({'None':0, '>7':1, '>8':2, 'Norm':3})
-
-
-    dataset = dataset.drop(['repaglinide','nateglinide','chlorpropamide','acetohexamide','tolbutamide','miglitol','troglitazone',
-    'tolazamide','examide','citoglipton','glyburide-metformin','glipizide-metformin','glimepiride-pioglitazone',
-    'metformin-rosiglitazone','metformin-pioglitazone'],axis=1)
+        # data encoding
+        dataset['change'] = dataset['change'].map({'No':0, 'Ch':1})
+        dataset['diabetesMed'] = dataset['diabetesMed'].map({'No':0, 'Yes':1})
 
 
-    #############################
+        dataset['max_glu_serum'] = dataset['max_glu_serum'].map({'None':0, '>300':1, 'Norm':2, '>200':3})
+        dataset['A1Cresult'] = dataset['A1Cresult'].map({'None':0, '>7':1, '>8':2, 'Norm':3})
 
-    prediction = model.predict(dataset)
 
-    if prediction == 0:
-        prediction_text_val='No Re-admission'
-    
-    elif prediction == 1:
-        prediction_text_val='After 30 days'
-    
-    elif prediction == 2:
-        prediction_text_val='Before 30 days'
+        dataset = dataset.drop(['repaglinide','nateglinide','chlorpropamide','acetohexamide','tolbutamide','miglitol','troglitazone',
+        'tolazamide','examide','citoglipton','glyburide-metformin','glipizide-metformin','glimepiride-pioglitazone',
+        'metformin-rosiglitazone','metformin-pioglitazone'],axis=1)
 
-    return render_template('Classification.html', prediction_text=prediction_text_val.format(prediction))
+
+        #############################
+
+        prediction = model.predict(dataset)
+
+        if prediction == 0:
+            prediction_text_val='No Re-admission'
+        
+        elif prediction == 1:
+            prediction_text_val='After 30 days'
+        
+        elif prediction == 2:
+            prediction_text_val='Before 30 days'
+
+        #return render_template('Classification.html', prediction_text=prediction_text_val.format(prediction))
+
+    except:
+            return render_template('Classification.html', prediction_text='Invalid Encounter ID')
     #output = round(prediction[0] ) 
-    #return render_template('Classification.html', prediction_text=' Customer Segmentation is :{}'.format(prediction))
+    return render_template('Classification.html', prediction_text='Patient might re-admit {}'.format(prediction_text_val),
+                                                  encounterID='Encounter ID: {}'.format(encounterID),
+                                                  patient_nbr='Patient No: {}'.format(patient_nbr),
+                                                  payer_code='Payer code: {}'.format(payer_code))
 if __name__ == "__main__":
     app.run(debug=True)
 
