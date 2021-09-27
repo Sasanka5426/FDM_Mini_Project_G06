@@ -7,7 +7,8 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.1.1-dist/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.1.1-dist/js/bootstrap.min.js') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap-5.1.1-dist/css/bootstrap.min.css') }}">  
-
+<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
 
 <!-- <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
@@ -105,9 +106,83 @@
                     <div class="card-body">
                       <h5 class="card-title">Plot(additional details)</h5>
                       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      <div id="labels" style="display: none;">{{labels}}</div>
+                      <div id="values" style="display: none;">{{values}}</div>
                       
-
+                      <canvas id="myChart" width="600" height="400"></canvas>
+                        <script>
                             
+                        var ctx = document.getElementById('myChart').getContext('2d');
+                        var lab = document.getElementById('labels');
+                        var dat = document.getElementById('values');
+                        var x = 0;
+                        var myChart = new Chart(ctx, {
+                               
+
+                            type: 'bar',
+                            data: {
+                                labels: ['BC', 'CH', 'CM', 'CP', 'BM', 'FR', 'HM', 'MC', 'MD', 'MP', 'OG', 'OT', 'PO', 'SI', 'SP', 'UN', 'WC'],
+                                // labels: lab.innerHTML,
+                                datasets: [{
+                                    label: 'just',
+                                    // data: dat.innerHTML,
+                                    data: [12, 19, 3, 5, 2, 3],
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            },
+                            options: {
+                                    responsive: false
+                                }
+                        });
+                        
+                        </script>
+                         <!-- <canvas id="lineChart" width="900" height="400"></canvas>
+                        // <script>
+                        //     var ctx = document.getElementById("lineChart").getContext("2d");
+                        //     var lineChart = new Chart(ctx, {
+                        //         type: "line",
+                        //         data: {
+                        //             labels: {{ labels | safe}}
+                        
+                        //             datasets: [
+                        //                 {
+                        //                     label: "Data points",
+                        //                     data: {{ values | safe}}
+                        //                     fill: false,
+                        //                     borderColor: "rgb(75, 192, 192)",
+                        //                     lineTension: 0.1
+                        //                 }
+                        //             ]
+                        //         },
+                        //         options: {
+                        //             responsive: false
+                        //         }
+                        //     });
+                        // </script>    -->
 
                     </div>
                 </div>

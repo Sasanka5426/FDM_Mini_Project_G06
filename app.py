@@ -9,7 +9,22 @@ model = pickle.load(open('model.pkl', 'rb'))
 #default page of our web-app
 @app.route('/')
 def home():
-    return render_template('Classification.html')
+    data = [
+        ("01-01-2020", 1597),
+        ("02-01-2020", 1456),
+        ("03-01-2020", 1908),
+        ("04-01-2020", 896),
+        ("05-01-2020", 755),
+        ("06-01-2020", 453),
+        ("07-01-2020", 1100),
+        ("08-01-2020", 1235),
+        ("09-01-2020", 1478),
+    ]
+
+    labels = [row[0] for row in data]
+    values = [row[1] for row in data]
+
+    return render_template('Classification.html', labels=labels, values=values)
 
 #To use the predict button in our web-app
 @app.route('/predict',methods=['POST'])
@@ -79,20 +94,20 @@ def predict():
         prediction = model.predict(dataset)
 
         if prediction == 0:
-            prediction_text_val='No Re-admission'
+            prediction_text_val=' not Re-admit'
         
         elif prediction == 1:
-            prediction_text_val='After 30 days'
+            prediction_text_val=' re-admit after 30 days'
         
         elif prediction == 2:
-            prediction_text_val='Before 30 days'
+            prediction_text_val=' re-admit before 30 days'
 
         #return render_template('Classification.html', prediction_text=prediction_text_val.format(prediction))
 
     except:
             return render_template('Classification.html', prediction_text='Invalid Encounter ID')
     #output = round(prediction[0] ) 
-    return render_template('Classification.html', prediction_text='Patient might re-admit {}'.format(prediction_text_val),
+    return render_template('Classification.html', prediction_text='Patient might {}'.format(prediction_text_val),
                                                   encounterID='Encounter ID: {}'.format(encounterID),
                                                   patient_nbr='Patient No: {}'.format(patient_nbr),
                                                   payer_code='Payer code: {}'.format(payer_code))
