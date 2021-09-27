@@ -131,7 +131,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card-body">
-                                <center><h5 class="card-title">jhvjkhv</h5></center>
+                                <center><h5 class="card-title">Gender Wise Re-admitted Patient Count</h5></center>
                                 <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                 <div id="labels" style="display: none;">{{labels}}</div>
                                 <div id="values" style="display: none;">{{values}}</div> -->
@@ -156,26 +156,27 @@
                                               data: [21063, 25470],
                                               backgroundColor: [
                                                   // 'rgba(255, 99, 132, 0.2)',
-                                                  // 'rgba(54, 162, 235, 0.2)',
-                                                  // 'rgba(255, 206, 86, 0.2)',
+                                                  'rgba(54, 150, 235, 0.2)',
+                                                  'rgba(225, 225, 225, 1)',
                                                   // 'rgba(75, 192, 192, 0.2)',
                                                   // 'rgba(153, 102, 255, 0.2)',
                                                   // 'rgba(255, 159, 64, 0.2)',
-                                                  'rgba(0, 23, 77, 1)',
-                                                  'rgba(168, 168, 168, 1)'
+                                                //   'rgba(0, 23, 77, 1)',
+                                                //   'rgba(168, 168, 168, 1)'
                                               ],
           
                                               borderColor: [
                                                   // 'rgba(255, 99, 132, 1)',
-                                                  // 'rgba(54, 162, 235, 1)',
-                                                  // 'rgba(255, 206, 86, 1)',
+                                                  'rgba(54, 162, 235, 1)',
+                                                  'rgba(149, 149, 149, 1)',
                                                   // 'rgba(75, 192, 192, 1)',
                                                   // 'rgba(153, 102, 255, 1)',
                                                   // 'rgba(255, 159, 64, 1)',
-                                                  'rgba(0, 23, 77, 1)',
-                                                  'rgba(168, 168, 168, 1)'
+                                                //   'rgba(0, 23, 77, 1)',
+                                                //   'rgba(168, 168, 168, 1)'
                                               ],
-                                              borderWidth: 1
+                                              borderWidth: 1,
+                                              
                                           }]
                                       },
                                       options: {
@@ -200,7 +201,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="card-body">
-                                <center><h5 class="card-title">jhvjkhv</h5></center>
+                                <center><h5 class="card-title">Age Wise Re-admitted Patient Count</h5></center>
                                 <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                 <div id="labels" style="display: none;">{{labels}}</div>
                                 <div id="values" style="display: none;">{{values}}</div> -->
@@ -214,37 +215,42 @@
                                   var x = 0;
                                   var myChart = new Chart(ctx, {
                                          
-          
-                                      type: 'bar',
+                                    
+                                      type: 'line',
                                       data: {
                                           labels: ['[0-10)','[10-20)','[20-30)','[30-40)','[40-50)','[50-60)','[60-70)','[70-80)','[80-90)','[90-100)'],
                                           // labels: lab.innerHTML,
                                           datasets: [{
-                                              label: 'just',
+                                              label: 'Patient Count',
                                               // data: dat.innerHTML,
                                               data: [29, 263, 742, 1599, 4279, 7534, 10328, 12430, 8223, 1106],
                                               backgroundColor: [
-                                                  'rgba(255, 99, 132, 0.2)',
-                                                  'rgba(54, 162, 235, 0.2)',
+                                              
+                                                //   'rgba(255, 99, 132, 0.2)',
+                                                   'rgba(54, 162, 235, 0.2)',
                                                   'rgba(255, 206, 86, 0.2)',
-                                                  'rgba(75, 192, 192, 0.2)',
-                                                  'rgba(153, 102, 255, 0.2)',
-                                                  'rgba(255, 159, 64, 0.2)',
-                                                  'rgba(0, 23, 77, 1)',
-                                                  'rgba(168, 168, 168, 1)'
+                                                //   'rgba(75, 192, 192, 0.2)',
+                                                //   'rgba(153, 102, 255, 0.2)',
+                                                //   'rgba(255, 159, 64, 0.2)',
+                                                //   'rgba(0, 23, 77, 1)',
+                                                //   'rgba(168, 168, 168, 1)'
                                               ],
           
                                               borderColor: [
-                                                  'rgba(255, 99, 132, 1)',
-                                                  'rgba(54, 162, 235, 1)',
+                                              
+                                                //   'rgba(255, 99, 132, 1)',
+                                                   'rgba(54, 162, 235, 1)',
                                                   'rgba(255, 206, 86, 1)',
-                                                  'rgba(75, 192, 192, 1)',
-                                                  'rgba(153, 102, 255, 1)',
-                                                  'rgba(255, 159, 64, 1)',
-                                                  'rgba(0, 23, 77, 1)',
-                                                  'rgba(168, 168, 168, 1)'
+                                                //   'rgba(75, 192, 192, 1)',
+                                                //   'rgba(153, 102, 255, 1)',
+                                                //   'rgba(255, 159, 64, 1)',
+                                                //   'rgba(0, 151, 203, 1)',
+                                                //   'rgba(168, 168, 168, 1)'
                                               ],
-                                              borderWidth: 1
+                                              borderWidth: 1,
+                                              fill: false,
+                                              
+
                                           }]
                                       },
                                       options: {
