@@ -39,6 +39,8 @@ def predict():
         encounterID = dataset['encounter_id'].values
         patient_nbr = dataset['patient_nbr'].values
         payer_code = dataset['payer_code'].values
+        gender = dataset['gender'].values
+        age = dataset['age'].values
 
         # dropping unwanted columns
         dataset = dataset.drop(['encounter_id','patient_nbr','weight','payer_code','medical_specialty','diag_1','diag_2','diag_3'],axis=1)
@@ -97,7 +99,9 @@ def predict():
     return render_template('Classification.html', prediction_text='Patient might {}'.format(prediction_text_val),
                                                   encounterID='Encounter ID: {}'.format(encounterID),
                                                   patient_nbr='Patient No: {}'.format(patient_nbr),
-                                                  payer_code='Payer code: {}'.format(payer_code))
+                                                  payer_code='Payer code: {}'.format(payer_code),
+                                                  gender='Gender: {}'.format(gender),
+                                                  age='Age: {}'.format(age))
 if __name__ == "__main__":
     app.run(debug=True)
 

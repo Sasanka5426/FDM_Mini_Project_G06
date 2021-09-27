@@ -48,10 +48,10 @@
     <div class="cintainer-fluide">
         <div class="row">
             <center>
-            <h3>
+            <h1>
                 <small class="text-muted">Predict</small>
                 Diebetic Patient Re-admission
-            </h3>
+            </h1>
             </center>
 
         </div>
@@ -98,13 +98,23 @@
 
 
             <div class="col-7">
+                <div class="row">
+                    <div class="col-md-12">
+                        <center>
+                        <b><h4 style="color:red;">{{ prediction_text }}</h4></b>
+                        </center>
+                    </div>
+                </div>
+
+
+
                 <div class="card w-150">
                     <div class="card-body">
 
                         {{encounterID}} &nbsp&nbsp&nbsp {{patient_nbr}}
                         <br>
          
-                        {{payer_code}}  &nbsp&nbsp&nbsp {{ prediction_text }}
+                        {{payer_code}}  &nbsp&nbsp&nbsp 
                         
                         
                             
