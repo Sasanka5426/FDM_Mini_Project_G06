@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>FDM MINI PROJECT</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.1.1-dist/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.1.1-dist/js/bootstrap.min.js') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap-5.1.1-dist/css/bootstrap.min.css') }}">  
+<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
+<!-- <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../Views/bootstrap-5.1.1-dist/css/bootstrap.min.css"> 
+<script src="../Views/bootstrap-5.1.1-dist/js/bootstrap.min.js"></script> 
+<script src="Components/research.js"></script>  -->
+
+
+  
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <!-- <a class="navbar-brand" href="#">Navbar w/ text</a> -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Classification</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">Clustering</a>
+              </li>
+              
+              
+            </ul>
+            <!-- <span class="navbar-text">
+              Navbar text with an inline element
+            </span> -->
+          </div>
+        </div>
+      </nav>
+<br>
+    <div class="cintainer-fluide">
+        <div class="row">
+            <center>
+            <h1>
+                <small class="text-muted">Predict</small>
+                Diebetic Patient Re-admission
+            </h1>
+            </center>
+
+        </div>
+        <br>
+    
+
+        <div class="row">
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-3">
+
+                <div class="card w-70">
+                    <div class="card-body">
+                      <h5 class="card-title">Please enter Encounter ID</h5>
+                      <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                      <!-- <a href="#" class="btn btn-primary">Button</a> -->
+                      <form action="{{ url_for('predict')}}"method="post">
+
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name= 'encounter_id' placeholder="Encounter ID" aria-label="encounter_id" aria-describedby="button-addon2">
+                            
+                        </div>
+                        <br>
+                        
+                        
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-secondary" >Submit</button>
+                            
+                        </div>
+        
+                        <!-- <button type="submit" class="btn btn-secondary">Submit</button> -->
+       
+                        </form>
+
+                    </div>
+                    
+                </div>
+
+                   
+
+            </div>
+
+
+            <div class="col-7">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card w-150">
+                            <div class="card-body">
+                                <center>
+                                <b><h4 style="color:red;">{{ prediction_text }}</h4></b>
+                                </center>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+
+                <br>
+
+
+
+                <!-- <div class="card w-150">
+                    <div class="card-body"> -->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <center>{{encounterID}}</center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <center>{{patient_nbr}}</center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <center>{{payer_code}}</center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <center>{{gender}}</center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <center>{{age}}</center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <center>{{time}}</center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                         
+                        <br>
+         
+                        
+                        
+                        
+                        
+                        <!-- test -->
+                        
+                        
+                            
+
+                    <!-- </div>
+                </div> -->
+
+            </div>
+
+            <div class="col-md-1">
+
+            </div>
+
+        </div>
+
+        <br><br>
+
+        <div class="row">
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-10">
+                <div class="card w-150">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <center><h5 class="card-title">Gender Wise Re-admitted Patient Count</h5></center>
+                                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <div id="labels" style="display: none;">{{labels}}</div>
+                                <div id="values" style="display: none;">{{values}}</div> -->
+                                
+                                <canvas id="myChart" width="600" height="400"></canvas>
+                                  <script>
+                                      
+                                  var ctx = document.getElementById('myChart').getContext('2d');
+                                  var lab = document.getElementById('labels');
+                                  var dat = document.getElementById('values');
+                                  var x = 0;
+                                  var myChart = new Chart(ctx, {
+                                         
+          
+                                      type: 'pie',
+                                      data: {
+                                          labels: ['Male', 'Female'],
+                                          // labels: lab.innerHTML,
+                                          datasets: [{
+                                              label: 'just',
+                                              // data: dat.innerHTML,
+                                              data: [21063, 25470],
+                                              backgroundColor: [
+                                                  // 'rgba(255, 99, 132, 0.2)',
+                                                  'rgba(54, 150, 235, 0.2)',
+                                                  'rgba(225, 225, 225, 1)',
+                                                  // 'rgba(75, 192, 192, 0.2)',
+                                                  // 'rgba(153, 102, 255, 0.2)',
+                                                  // 'rgba(255, 159, 64, 0.2)',
+                                                //   'rgba(0, 23, 77, 1)',
+                                                //   'rgba(168, 168, 168, 1)'
+                                              ],
+          
+                                              borderColor: [
+                                                  // 'rgba(255, 99, 132, 1)',
+                                                  'rgba(54, 162, 235, 1)',
+                                                  'rgba(149, 149, 149, 1)',
+                                                  // 'rgba(75, 192, 192, 1)',
+                                                  // 'rgba(153, 102, 255, 1)',
+                                                  // 'rgba(255, 159, 64, 1)',
+                                                //   'rgba(0, 23, 77, 1)',
+                                                //   'rgba(168, 168, 168, 1)'
+                                              ],
+                                              borderWidth: 1,
+                                              
+                                          }]
+                                      },
+                                      options: {
+                                          scales: {
+                                              y: {
+                                                  beginAtZero: true
+                                              }
+                                          }
+                                      },
+                                      options: {
+                                              responsive: false
+                                          }
+                                  });
+                                  
+                                  </script>
+                                   
+          
+                              </div>
+
+
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <center><h5 class="card-title">Age Wise Re-admitted Patient Count</h5></center>
+                                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <div id="labels" style="display: none;">{{labels}}</div>
+                                <div id="values" style="display: none;">{{values}}</div> -->
+                                
+                                <canvas id="myChart2" width="600" height="400"></canvas>
+                                  <script>
+                                      
+                                  var ctx = document.getElementById('myChart2').getContext('2d');
+                                  var lab = document.getElementById('labels');
+                                  var dat = document.getElementById('values');
+                                  var x = 0;
+                                  var myChart = new Chart(ctx, {
+                                         
+                                    
+                                      type: 'line',
+                                      data: {
+                                          labels: ['[0-10)','[10-20)','[20-30)','[30-40)','[40-50)','[50-60)','[60-70)','[70-80)','[80-90)','[90-100)'],
+                                          // labels: lab.innerHTML,
+                                          datasets: [{
+                                              label: 'Patient Count',
+                                              // data: dat.innerHTML,
+                                              data: [29, 263, 742, 1599, 4279, 7534, 10328, 12430, 8223, 1106],
+                                              backgroundColor: [
+                                              
+                                                //   'rgba(255, 99, 132, 0.2)',
+                                                   'rgba(54, 162, 235, 0.2)',
+                                                  'rgba(255, 206, 86, 0.2)',
+                                                //   'rgba(75, 192, 192, 0.2)',
+                                                //   'rgba(153, 102, 255, 0.2)',
+                                                //   'rgba(255, 159, 64, 0.2)',
+                                                //   'rgba(0, 23, 77, 1)',
+                                                //   'rgba(168, 168, 168, 1)'
+                                              ],
+          
+                                              borderColor: [
+                                              
+                                                //   'rgba(255, 99, 132, 1)',
+                                                   'rgba(54, 162, 235, 1)',
+                                                  'rgba(255, 206, 86, 1)',
+                                                //   'rgba(75, 192, 192, 1)',
+                                                //   'rgba(153, 102, 255, 1)',
+                                                //   'rgba(255, 159, 64, 1)',
+                                                //   'rgba(0, 151, 203, 1)',
+                                                //   'rgba(168, 168, 168, 1)'
+                                              ],
+                                              borderWidth: 1,
+                                              fill: false,
+                                              
+
+                                          }]
+                                      },
+                                      options: {
+                                        
+                                          scales: {
+                                              y: {
+                                                  beginAtZero: true
+                                              }
+                                              
+                                          }
+                                      },
+                                      options: {
+                                        indexAxis: 'y',
+                                              responsive: true
+                                          }
+                                  });
+                                  
+                                  </script>
+                                   
+          
+                              </div>
+
+
+
+                        </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    
+                </div>
+
+            </div>
+            <div class="col-md-1">
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+   
+
+
+</body>
+</html>
