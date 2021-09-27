@@ -41,6 +41,7 @@ def predict():
         payer_code = dataset['payer_code'].values
         gender = dataset['gender'].values
         age = dataset['age'].values
+        time = dataset['time_in_hospital'].values
 
         # dropping unwanted columns
         dataset = dataset.drop(['encounter_id','patient_nbr','weight','payer_code','medical_specialty','diag_1','diag_2','diag_3'],axis=1)
@@ -96,12 +97,16 @@ def predict():
     except:
             return render_template('Classification.html', prediction_text='Invalid Encounter ID')
     #output = round(prediction[0] ) 
+
+    print(type(encounterID))
+
     return render_template('Classification.html', prediction_text='Patient might {}'.format(prediction_text_val),
-                                                  encounterID='Encounter ID: {}'.format(encounterID),
-                                                  patient_nbr='Patient No: {}'.format(patient_nbr),
-                                                  payer_code='Payer code: {}'.format(payer_code),
-                                                  gender='Gender: {}'.format(gender),
-                                                  age='Age: {}'.format(age))
+                                                  encounterID='Encounter ID: {}'.format(encounterID[0]),
+                                                  patient_nbr='Patient No: {}'.format(patient_nbr[0]),
+                                                  payer_code='Payer code: {}'.format(payer_code[0]),
+                                                  gender='Gender: {}'.format(gender[0]),
+                                                  age='Age: {}'.format(age[0]),
+                                                  time='Time in Hospital: {} days'.format(time[0]))
 if __name__ == "__main__":
     app.run(debug=True)
 

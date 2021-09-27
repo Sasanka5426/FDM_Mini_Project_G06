@@ -100,30 +100,99 @@
             <div class="col-7">
                 <div class="row">
                     <div class="col-md-12">
-                        <center>
-                        <b><h4 style="color:red;">{{ prediction_text }}</h4></b>
-                        </center>
+                        <div class="card w-150">
+                            <div class="card-body">
+                                <center>
+                                <b><h4 style="color:red;">{{ prediction_text }}</h4></b>
+                                </center>
+                            </div>
+                        </div>    
                     </div>
                 </div>
 
+                <br>
 
 
-                <div class="card w-150">
-                    <div class="card-body">
 
-                        {{encounterID}} &nbsp&nbsp&nbsp {{patient_nbr}}
+                <!-- <div class="card w-150">
+                    <div class="card-body"> -->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <center>{{encounterID}}</center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <center>{{patient_nbr}}</center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <center>{{payer_code}}</center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <center>{{gender}}</center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <center>{{age}}</center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <center>{{time}}</center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                         
                         <br>
          
-                        {{payer_code}}  &nbsp&nbsp&nbsp 
-                        {{gender}}
-                        {{age}}
+                        
+                        
+                        
+                        
                         <!-- test -->
                         
                         
                             
 
-                    </div>
-                </div>
+                    <!-- </div>
+                </div> -->
 
             </div>
 
@@ -133,7 +202,7 @@
 
         </div>
 
-        <br><br><br><br>
+        <br><br>
 
         <div class="row">
             <div class="col-md-1">
