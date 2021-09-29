@@ -3,20 +3,20 @@ from imblearn.over_sampling import SMOTE
 import pickle
 import pandas as pd
 import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
+# import seaborn as sns
+# import matplotlib.pyplot as plt
 
 from sklearn.metrics import accuracy_score, confusion_matrix, r2_score
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.tree import DecisionTreeClassifier, export_graphviz
+# from sklearn.tree import DecisionTreeClassifier, export_graphviz
 from sklearn.model_selection import train_test_split
 from sklearn import tree
 from sklearn.ensemble import RandomForestClassifier,RandomForestRegressor,ExtraTreesClassifier,ExtraTreesRegressor
-from xgboost import XGBRegressor,XGBClassifier
-from sklearn.neighbors import KNeighborsClassifier,KNeighborsRegressor #KNN
+# from xgboost import XGBRegressor,XGBClassifier
+# from sklearn.neighbors import KNeighborsClassifier,KNeighborsRegressor #KNN
 from sklearn.model_selection import train_test_split,cross_val_score,GridSearchCV,KFold
 from sklearn.metrics import confusion_matrix, accuracy_score,classification_report,mean_squared_error
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, accuracy_score,classification_report,mean_squared_error
 from sklearn.tree import DecisionTreeClassifier,DecisionTreeRegressor,plot_tree,export_text
 import imblearn
