@@ -25,7 +25,7 @@ import os
 ### Data Preprocessing
 
 # importing dataset
-dataset = pd.read_csv("Data//diabetic_data.csv")
+dataset = pd.read_csv("Data//demo_dataset_train.csv")
 
 # dropping unwanted columns
 dataset = dataset.drop(['encounter_id','patient_nbr','weight','payer_code','medical_specialty','diag_1','diag_2','diag_3'],axis=1)
